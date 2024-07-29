@@ -2,11 +2,11 @@
   {
     "name": "default",
     "type": "postgres",
-    "host": "localhost",
+    "host": "surus.db.elephantsql.com",
     "port": 5432,
-    "username": "c4t",
-    "password": "c4t",
-    "database": "medical_exam",
+    "username": "kjiiaynk",
+    "password": "IDH_SE5sevRLATd3d994oiS7n4pPaNnI",
+    "database": "kjiiaynk",
     "synchronize": true,
     "logging": false,
     "entities": [
