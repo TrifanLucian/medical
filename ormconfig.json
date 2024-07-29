@@ -1,16 +1,22 @@
-{
-  "type": "postgres",
-  "host": "localhost",
-  "port": 5432,
-  "username": "your_username",
-  "password": "your_password",
-  "database": "your_database",
-  "synchronize": true,
-  "logging": false,
-  "entities": ["src/models/**/*.ts"],
-  "migrations": ["src/migrations/**/*.ts"],
-  "cli": {
-    "entitiesDir": "src/models",
-    "migrationsDir": "src/migrations"
+[
+  {
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "c4t",
+    "password": "c4t",
+    "database": "medical_exam",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+      "src/models/**/*.ts"
+    ],
+    "migrations": [
+      "src/migrations/**/*.ts"
+    ],
+    "cli": {
+      "entitiesDir": "src/models",
+      "migrationsDir": "src/migrations"
+    }
   }
-}
+]

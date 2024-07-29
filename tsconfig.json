@@ -5,7 +5,7 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "outDir": "./build",
-    "strict": true,
+    "strict": false,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
@@ -23,9 +23,10 @@
     "importHelpers": false,
     "preserveSymlinks": true,
     "strictPropertyInitialization": false,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "allowJs": true, // Allow JavaScript files
+    "checkJs": false // Do not type check JavaScript files
   },
-  "lib": ["esnext"],
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "**/*.js"], // Include .js files
   "exclude": ["node_modules"]
 }

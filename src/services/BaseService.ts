@@ -38,8 +38,16 @@ export class BaseService<T extends ObjectLiteral> {
 
     async list(page: number, limit: number, filters: QueryFilter[] = [], relationDepth: string = 'default'): Promise<PaginatedResult<T>> {
         const relations = this.queryRelations[relationDepth] || this.relations;
-        const [result, total] = await this.applyFilters(this.repository.createQueryBuilder('entity'), filters)
-            .leftJoinAndSelect(relations.join(','), 'relation')
+
+        let query = this.repository.createQueryBuilder('entity');
+        query = this.applyFilters(query, filters);
+
+        // Add left joins for relations
+        relations.forEach(relation => {
+            query = query.leftJoinAndSelect(`entity.${relation}`, relation);
+        });
+
+        const [result, total] = await query
             .skip((page - 1) * limit)
             .take(limit)
             .getManyAndCount();
@@ -49,7 +57,7 @@ export class BaseService<T extends ObjectLiteral> {
 
     protected applyFilters(query: SelectQueryBuilder<T>, filters: QueryFilter[]): SelectQueryBuilder<T> {
         filters.forEach((filter) => {
-            query = query.andWhere(`entity.${filter.field} = :value`, { value: filter.value });
+            query = query.andWhere(`entity.${filter.field} = :${filter.field}`, { [filter.field]: filter.value });
         });
         return query;
     }
