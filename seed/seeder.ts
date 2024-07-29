@@ -1,5 +1,5 @@
 import 'dotenv/config';
-
+import bcrypt from 'bcryptjs';
 import { UserService } from '../src/services';
 import { RoleService } from '../src/services';
 import { QuestionService } from '../src/services';
@@ -10,10 +10,12 @@ import { ChoiceService } from '../src/services';
 import { QuestionnaireQuestionService } from '../src/services';
 import { ServiceFactory } from '../src/services/ServiceFactory';
 import seedData from './seed';
-import {connect} from "../src/server/database";
+import { connect } from "../src/server/database";
 
 async function seed() {
-    connect().then(async _r => {
+    try {
+        await connect();
+
         const serviceFactory = new ServiceFactory();
 
         const userService = new UserService(serviceFactory);
@@ -33,7 +35,8 @@ async function seed() {
         for (const roleData of seedData.roles) {
             for (const userData of roleData.users) {
                 const role = roles.find(r => r.name === roleData.name);
-                const user = await userService.create({ ...userData, role });
+                const hashedPassword = await bcrypt.hash(userData.password, 10);
+                const user = await userService.create({ ...userData, password: hashedPassword, role });
                 users.push(user);
             }
         }
@@ -66,11 +69,11 @@ async function seed() {
                 return questionnaireQuestionService.create({ questionnaire, question });
             }));
         }
-    });
+
+        console.log('Seeding completed successfully.');
+    } catch (error) {
+        console.error('Seeding failed:', error);
+    }
 }
 
-seed().then(() => {
-    console.log('Seeding completed successfully.');
-}).catch((error) => {
-    console.error('Seeding failed:', error);
-});
+seed();
