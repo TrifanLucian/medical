@@ -1,35 +1,36 @@
-import express from 'express';
-import { createDynamicRoutes } from './createDynamicRoutes';
-import { User } from '../models/User';
-import { Role } from '../models/Role';
-import { ActiveSession } from '../models/ActiveSession';
-import { Choice } from '../models/Choice';
-import { Question } from '../models/Question';
-import { Questionnaire } from '../models/Questionnaire';
-import { QuestionnaireQuestion } from '../models/QuestionnaireQuestion';
-import { QuestionnaireType } from '../models/QuestionnaireType';
-import { QuestionType } from '../models/QuestionType';
-import { Setting } from '../models/Setting';
-import { Ticket } from '../models/Ticket';
-import { UserQuestion } from '../models/UserQuestion';
-import { UserQuestionnaire } from '../models/UserQuestionnaire';
-import { UserService } from '../services/UserService';
-import { RoleService } from '../services/RoleService';
-import { ActiveSessionService } from '../services/ActiveSessionService';
-import { ChoiceService } from '../services/ChoiceService';
-import { QuestionService } from '../services/QuestionService';
-import { QuestionnaireService } from '../services/QuestionnaireService';
-import { QuestionnaireQuestionService } from '../services/QuestionnaireQuestionService';
-import { QuestionnaireTypeService } from '../services/QuestionnaireTypeService';
-import { QuestionTypeService } from '../services/QuestionTypeService';
-import { SettingService } from '../services/SettingService';
-import { TicketService } from '../services/TicketService';
-import { UserQuestionService } from '../services/UserQuestionService';
-import { UserQuestionnaireService } from '../services/UserQuestionnaireService';
-import { ServiceFactory } from '../services/ServiceFactory';
+import { createDynamicRoutes } from '../../utils/createDynamicRoutes';
+import { User } from '../../models/User';
+import { Role } from '../../models/Role';
+import { ActiveSession } from '../../models/ActiveSession';
+import { Choice } from '../../models/Choice';
+import { Question } from '../../models/Question';
+import { Questionnaire } from '../../models/Questionnaire';
+import { QuestionnaireQuestion } from '../../models/QuestionnaireQuestion';
+import { QuestionnaireType } from '../../models/QuestionnaireType';
+import { QuestionType } from '../../models/QuestionType';
+import { Setting } from '../../models/Setting';
+import { Ticket } from '../../models/Ticket';
+import { UserQuestion } from '../../models/UserQuestion';
+import { UserQuestionnaire } from '../../models/UserQuestionnaire';
+import { UserService } from '../../services';
+import { RoleService } from '../../services';
+import { ActiveSessionService } from '../../services';
+import { ChoiceService } from '../../services';
+import { QuestionService } from '../../services';
+import { QuestionnaireService } from '../../services';
+import { QuestionnaireQuestionService } from '../../services';
+import { QuestionnaireTypeService } from '../../services';
+import { QuestionTypeService } from '../../services';
+import { SettingService } from '../../services';
+import { TicketService } from '../../services';
+import { UserQuestionService } from '../../services';
+import { UserQuestionnaireService } from '../../services';
+import { ServiceFactory } from '../../services/ServiceFactory';
 import { body, param } from 'express-validator';
+import express, { Request, Response } from 'express';
 
-// Assuming services have been initialized and provided
+
+// Initialize services
 const services = {
     User: new UserService(new ServiceFactory()),
     Role: new RoleService(new ServiceFactory()),
@@ -46,6 +47,7 @@ const services = {
     UserQuestionnaire: new UserQuestionnaireService(new ServiceFactory())
 };
 
+// Define entities
 const entities = [
     User,
     Role,
@@ -62,23 +64,23 @@ const entities = [
     UserQuestionnaire
 ];
 
+// Define controller overrides
 const overrides = {
     User: {
-        async create(req, res) {
-            // Custom create logic for User
-            const result = await this.service.create(req.body);
+        async create(req: Request, res: Response) {
+            const result = await services.User.create(req.body);
             res.status(201).json({ success: true, data: result });
         }
     },
     Role: {
-        async update(req, res) {
-            // Custom update logic for Role
-            const result = await this.service.update(req.params.id, req.body);
+        async update(req: Request, res: Response) {
+            const result = await services.Role.update(req.params.id, req.body);
             res.status(200).json({ success: true, data: result });
         }
     }
 };
 
+// Define validation rules
 const validationRules = {
     User: {
         create: [body('username').isString(), body('email').isEmail()],
@@ -178,6 +180,6 @@ const app = express();
 const dynamicRoutes = createDynamicRoutes(entities, services, overrides, validationRules);
 
 app.use(express.json());
-app.use('/api', dynamicRoutes);
+app.use('/admin', dynamicRoutes);
 
 export default app;
