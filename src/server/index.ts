@@ -14,7 +14,7 @@ import {
     // settingRouter,
 } from '../routes/admin/_old';
 
-import adminRouter from '../routes/admin';
+import mapAndCreateEndpoints from '../routes/admin';
 
 import {
     publicTicketRouter,
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV !== 'test') {
 
         // Initialize admin routes middleware
         server.use('/v1/admin/auth', limiter, authRouter);
-        server.use('/v1', limiter, adminRouter);
+        server.use('/v1', limiter, mapAndCreateEndpoints());
         // server.use('/v1/admin', checkToken, ticketRouter);
         // server.use('/v1/admin', checkToken, settingRouter);
 
