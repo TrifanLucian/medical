@@ -12,11 +12,11 @@ export default {
           "avatar_url": null,
           "country": null,
           "bio": null,
-          "created_at": "CURRENT_TIMESTAMP",
+          "created_at": "2024-07-29T00:00:00Z",
           "active_sessions": [
             {
               "token": "admin_token",
-              "created_at": "CURRENT_TIMESTAMP"
+              "created_at": "2024-07-29T00:00:00Z"
             }
           ]
         }
@@ -34,11 +34,11 @@ export default {
           "avatar_url": null,
           "country": null,
           "bio": null,
-          "created_at": "CURRENT_TIMESTAMP",
+          "created_at": "2024-07-29T00:00:00Z",
           "active_sessions": [
             {
               "token": "user1_token",
-              "created_at": "CURRENT_TIMESTAMP"
+              "created_at": "2024-07-29T00:00:00Z"
             }
           ]
         },
@@ -51,11 +51,11 @@ export default {
           "avatar_url": null,
           "country": null,
           "bio": null,
-          "created_at": "CURRENT_TIMESTAMP",
+          "created_at": "2024-07-29T00:00:00Z",
           "active_sessions": [
             {
               "token": "user2_token",
-              "created_at": "CURRENT_TIMESTAMP"
+              "created_at": "2024-07-29T00:00:00Z"
             }
           ]
         }
@@ -68,14 +68,14 @@ export default {
       "num_choices": 4,
       "num_correct": 1,
       "multiple_choice": true,
-      "created_at": "CURRENT_TIMESTAMP"
+      "created_at": "2024-07-29T00:00:00Z"
     },
     {
       "name": "True/False",
       "num_choices": 2,
       "num_correct": 1,
       "multiple_choice": false,
-      "created_at": "CURRENT_TIMESTAMP"
+      "created_at": "2024-07-29T00:00:00Z"
     }
   ],
   "questions": [
@@ -85,7 +85,7 @@ export default {
       "created_by": "admin",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Paris", "is_correct": true },
         { "choice_text": "London", "is_correct": false },
@@ -99,7 +99,7 @@ export default {
       "created_by": "user1",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "True", "is_correct": true },
         { "choice_text": "False", "is_correct": false }
@@ -111,7 +111,7 @@ export default {
       "created_by": "user2",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "3", "is_correct": false },
         { "choice_text": "4", "is_correct": true },
@@ -125,7 +125,7 @@ export default {
       "created_by": "admin",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "H2O", "is_correct": true },
         { "choice_text": "O2", "is_correct": false },
@@ -139,7 +139,7 @@ export default {
       "created_by": "user1",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "7", "is_correct": false },
         { "choice_text": "8", "is_correct": true },
@@ -153,7 +153,7 @@ export default {
       "created_by": "user2",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "299,792 km/s", "is_correct": true },
         { "choice_text": "150,000 km/s", "is_correct": false },
@@ -167,7 +167,7 @@ export default {
       "created_by": "admin",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "George Washington", "is_correct": true },
         { "choice_text": "Thomas Jefferson", "is_correct": false },
@@ -181,7 +181,7 @@ export default {
       "created_by": "user1",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "1944", "is_correct": false },
         { "choice_text": "1945", "is_correct": true },
@@ -195,7 +195,7 @@ export default {
       "created_by": "user2",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Mayflower", "is_correct": true },
         { "choice_text": "Santa Maria", "is_correct": false },
@@ -209,7 +209,7 @@ export default {
       "created_by": "admin",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Albert Einstein", "is_correct": true },
         { "choice_text": "Isaac Newton", "is_correct": false },
@@ -223,7 +223,7 @@ export default {
       "created_by": "user1",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Mars", "is_correct": true },
         { "choice_text": "Jupiter", "is_correct": false },
@@ -237,7 +237,7 @@ export default {
       "created_by": "user2",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Pacific Ocean", "is_correct": true },
         { "choice_text": "Atlantic Ocean", "is_correct": false },
@@ -251,7 +251,7 @@ export default {
       "created_by": "admin",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Leonardo da Vinci", "is_correct": true },
         { "choice_text": "Vincent van Gogh", "is_correct": false },
@@ -265,7 +265,7 @@ export default {
       "created_by": "user1",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Atom", "is_correct": true },
         { "choice_text": "Molecule", "is_correct": false },
@@ -279,7 +279,7 @@ export default {
       "created_by": "user2",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Oxygen", "is_correct": true },
         { "choice_text": "Osmium", "is_correct": false },
@@ -293,7 +293,7 @@ export default {
       "created_by": "admin",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "7", "is_correct": true },
         { "choice_text": "6", "is_correct": false },
@@ -307,7 +307,7 @@ export default {
       "created_by": "user1",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Nile", "is_correct": true },
         { "choice_text": "Amazon", "is_correct": false },
@@ -321,7 +321,7 @@ export default {
       "created_by": "user2",
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "choices": [
         { "choice_text": "Harper Lee", "is_correct": true },
         { "choice_text": "Mark Twain", "is_correct": false },
@@ -334,22 +334,22 @@ export default {
     {
       "name": "General Knowledge",
       "is_infinite": false,
-      "created_at": "CURRENT_TIMESTAMP"
+      "created_at": "2024-07-29T00:00:00Z"
     },
     {
       "name": "Science",
       "is_infinite": false,
-      "created_at": "CURRENT_TIMESTAMP"
+      "created_at": "2024-07-29T00:00:00Z"
     },
     {
       "name": "History",
       "is_infinite": false,
-      "created_at": "CURRENT_TIMESTAMP"
+      "created_at": "2024-07-29T00:00:00Z"
     },
     {
       "name": "Geography",
       "is_infinite": false,
-      "created_at": "CURRENT_TIMESTAMP"
+      "created_at": "2024-07-29T00:00:00Z"
     }
   ],
   "questionnaires": [
@@ -360,7 +360,7 @@ export default {
       "max_wrong_answers": 3,
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "questions": [
         "What is the capital of France?",
         "Is the sky blue?",
@@ -376,7 +376,7 @@ export default {
       "max_wrong_answers": 2,
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "questions": [
         "What is the chemical symbol for water?",
         "How many planets are in the Solar System?",
@@ -392,7 +392,7 @@ export default {
       "max_wrong_answers": 4,
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "questions": [
         "Who was the first president of the United States?",
         "In which year did World War II end?",
@@ -408,7 +408,7 @@ export default {
       "max_wrong_answers": 3,
       "is_submitted": true,
       "submission_status": "approved",
-      "created_at": "CURRENT_TIMESTAMP",
+      "created_at": "2024-07-29T00:00:00Z",
       "questions": [
         "What is the capital of France?",
         "Which planet is known as the Red Planet?",

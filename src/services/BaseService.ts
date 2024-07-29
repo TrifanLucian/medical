@@ -1,4 +1,4 @@
-import { Repository, EntityTarget, DeepPartial, SelectQueryBuilder, ObjectLiteral } from 'typeorm';
+import { Repository, EntityTarget, DeepPartial, ObjectLiteral, FindManyOptions, FindOneOptions } from 'typeorm';
 import { PaginatedResult, QueryFilter, paginate } from '../utils/pagination';
 import { connection } from '../server/database';
 
@@ -23,7 +23,8 @@ export class BaseService<T extends ObjectLiteral> {
 
     async read(id: string, relationDepth: string = 'default'): Promise<T | undefined> {
         const relations = this.queryRelations[relationDepth] || this.relations;
-        return this.repository.findOne(id, { relations });
+        const options: FindOneOptions<T> = { relations };
+        return this.repository.findOne(id, options);
     }
 
     async update(id: string, data: DeepPartial<T>): Promise<T | undefined> {
@@ -38,28 +39,24 @@ export class BaseService<T extends ObjectLiteral> {
 
     async list(page: number, limit: number, filters: QueryFilter[] = [], relationDepth: string = 'default'): Promise<PaginatedResult<T>> {
         const relations = this.queryRelations[relationDepth] || this.relations;
+        const options: FindManyOptions<T> = {
+            relations,
+            skip: (page - 1) * limit,
+            take: limit,
+            where: this.buildWhereClause(filters),
+        };
 
-        let query = this.repository.createQueryBuilder('entity');
-        query = this.applyFilters(query, filters);
-
-        // Add left joins for relations
-        relations.forEach(relation => {
-            query = query.leftJoinAndSelect(`entity.${relation}`, relation);
-        });
-
-        const [result, total] = await query
-            .skip((page - 1) * limit)
-            .take(limit)
-            .getManyAndCount();
+        const [result, total] = await this.repository.findAndCount(options);
 
         return paginate(result, page, limit, total);
     }
 
-    protected applyFilters(query: SelectQueryBuilder<T>, filters: QueryFilter[]): SelectQueryBuilder<T> {
-        filters.forEach((filter) => {
-            query = query.andWhere(`entity.${filter.field} = :${filter.field}`, { [filter.field]: filter.value });
+    protected buildWhereClause(filters: QueryFilter[]): ObjectLiteral {
+        const where: ObjectLiteral = {};
+        filters.forEach(filter => {
+            where[filter.field] = filter.value;
         });
-        return query;
+        return where;
     }
 
     public getRelations(): string[] {

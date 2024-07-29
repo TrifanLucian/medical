@@ -10,11 +10,15 @@ https://dbdiagram.io/d/medical_exam-66a6e74a8b4bb5230e934a92
 
 > Follow the official Docker installation guide for Windows to install Docker Desktop on your Windows machine.
 
+https://docs.docker.com/desktop/install/windows-install/
+
 ### WSDL Explanation
 WSDL (Web Services Description Language) is an XML-based language used for describing the functionality offered by a web service. WSDL is important because it:
 
 - Provides a detailed description of web services and their operations, messages, and binding information.
 - Facilitates the automation of web service communication, making it easier to integrate and interact with different services.
+
+Follow instructions here: https://docs.docker.com/desktop/wsl/
 ### Installing Docker Compose
 
 Docker Compose comes pre-installed with Docker Desktop for Windows. Ensure Docker Compose is installed by running:
@@ -154,14 +158,6 @@ The package.json file contains metadata about your project, including dependenci
 - **build**: Builds the project using TypeScript compiler.
 - **typeorm**: Runs TypeORM CLI commands.
 
-### Running Migrations
-
-Run database migrations using TypeORM:
-
-```ssh
-yarn typeorm migration:run
-```
-
 #### Database Connectivity Configuration
 
 Database configuration can be found in the TypeORM configuration:
@@ -186,6 +182,14 @@ Database configuration can be found in the TypeORM configuration:
 
 ````
 
+### Running Migrations
+
+Run database migrations using TypeORM:
+
+```ssh
+yarn typeorm migration:run
+```
+
 ### Configuring PhpStorm to Run the Development Script
 
 1. Open PhpStorm and go to Run > Edit Configurations.
@@ -205,6 +209,17 @@ To run the built project:
 ````sh
 node build/index.js
 ````
+
+#### Seeding the project
+
+Just run 
+
+
+````sh
+    yarn seed
+````
+
+and the database will have some basic information seeded.
 
 ### This here is the dbdiagram syntax for the database
 
