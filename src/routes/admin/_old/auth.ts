@@ -39,39 +39,46 @@ const userUpdate = Joi.object().keys({
   user_role: Joi.number().optional(),
 });
 
-authRouter.post('/register', (req, res) => {
-  // Joy Validation
-  const result = userSchema.validate(req.body);
-  if (result.error) {
-    res.status(422).json({
-      success: false,
-      msg: `Validation err: ${result.error.details[0].message}`,
-    });
-    return;
-  }
+authRouter.post('/register', async (req, res) => {
+  try {
+    // Joy Validation
+    const result = await userSchema.validate(req.body);
+    if (result.error) {
+      res.status(422).json({
+        success: false,
+        msg: `Validation err: ${result.error.details[0].message}`,
+      });
+      return;
+    }
 
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  const userRepository = connection!.getRepository(User);
+    const userRepository = connection!.getRepository(User);
 
-  userRepository.findOne({ email }).then((user) => {
-    if (user) {
-      res.json({ success: false, msg: 'Email already exists' });
-    } else {
-      bcrypt.genSalt(10, (_err, salt) => {
-        bcrypt.hash(password, salt).then((hash) => {
-          const query = {
-            ...req.body,
-            password: hash,
-          };
+    userRepository.findOne({ email }).then((user) => {
+      if (user) {
+        res.json({ success: false, msg: 'Email already exists' });
+      } else {
+        bcrypt.genSalt(10, (_err, salt) => {
+          bcrypt.hash(password, salt).then((hash) => {
+            const query = {
+              ...req.body,
+              password: hash,
+            };
 
-          userRepository.save(query).then((u) => {
-            res.json({ success: true, userID: u.id, msg: 'The user was successfully registered' });
+            userRepository.save(query).then((u) => {
+              res.json({ success: true, userID: u.id, msg: 'The user was successfully registered' });
+            });
           });
         });
-      });
-    }
-  });
+      }
+    });
+  } catch(e: any) {
+    res.status(422).json({
+      success: false,
+      msg: `Validation err: ${e.details[0].message}`,
+    });
+  }
 });
 
 authRouter.post('/login', (req, res) => {

@@ -3,9 +3,9 @@
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "username": "c4t",
-    "password": "c4t",
-    "database": "medical_exam",
+    "username": "medical",
+    "password": "medical",
+    "database": "medical",
     "synchronize": true,
     "logging": false,
     "entities": [
