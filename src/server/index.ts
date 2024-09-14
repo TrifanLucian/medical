@@ -4,7 +4,7 @@ import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
 import passport from 'passport';
-import {rateLimit} from 'express-rate-limit'
+// import {rateLimit} from 'express-rate-limit'
 // import { checkToken } from '../config/safeRoutes';
 
 import initPassport from '../config/passport';
@@ -24,13 +24,13 @@ import {
 import {connect} from './database';
 
 // Instantiate rate limiter
-const limiter = rateLimit({
-    windowMs: 1 * 60 * 1000, // 1 minute
-    limit: 3, // Limit each IP to  requests per `window` (here, per 1 minute).
-    standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-    // store: ... , // Redis, Memcached, etc. See below.
-});
+// const limiter = rateLimit({
+//     windowMs: 1 * 60 * 1000, // 1 minute
+//     limit: 3, // Limit each IP to  requests per `window` (here, per 1 minute).
+//     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+//     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+//     // store: ... , // Redis, Memcached, etc. See below.
+// });
 
 // Instantiate express
 const server = express();
@@ -47,7 +47,7 @@ if (process.env.NODE_ENV !== 'test') {
         server.use(express.json());
 
         // Initialize admin routes middleware
-        server.use('/v1/admin/auth', limiter, authRouter);
+        server.use('/v1/admin/auth', authRouter);
         // server.use('/v1', limiter, mapAndCreateEndpoints());
         server.use('/v1', mapAndCreateEndpoints());
         // server.use('/v1/admin', checkToken, ticketRouter);

@@ -99,7 +99,9 @@ authRouter.post('/login', (req, res) => {
   const activeSessionRepository = connection!.getRepository(ActiveSession);
   userRepository.findOne({ email }).then((user) => {
     if (!user) {
-      return res.json({ success: false, msg: 'Wrong credentials' });
+      res.sendStatus(401);
+      res.json({ success: false, msg: 'Wrong credentials' });
+      return res;
     }
 
     if (!user.password) {
@@ -130,6 +132,7 @@ authRouter.post('/login', (req, res) => {
           user,
         });
       }
+      res.status(401);
       return res.json({ success: false, msg: 'Wrong credentials' });
     });
   });
