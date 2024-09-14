@@ -4,13 +4,13 @@ import { User } from './User';
 
 @Entity()
 export class Questionnaire {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number;
 
     @Column()
     name: string;
 
-    @ManyToOne(() => QuestionnaireType)
+    @ManyToOne(() => QuestionnaireType, {nullable: true})
     type: QuestionnaireType;
 
     @ManyToOne(() => User)

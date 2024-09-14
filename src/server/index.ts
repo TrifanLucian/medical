@@ -10,11 +10,12 @@ import passport from 'passport';
 import initPassport from '../config/passport';
 import {
     authRouter,
+    questionaireRouter,
     // ticketRouter,
     // settingRouter,
 } from '../routes/admin/_old';
 
-import mapAndCreateEndpoints from '../routes/admin';
+// import mapAndCreateEndpoints from '../routes/admin';
 
 import {
     publicTicketRouter,
@@ -48,8 +49,9 @@ if (process.env.NODE_ENV !== 'test') {
 
         // Initialize admin routes middleware
         server.use('/v1/admin/auth', authRouter);
+        server.use('/v1/admin', questionaireRouter);
         // server.use('/v1', limiter, mapAndCreateEndpoints());
-        server.use('/v1', mapAndCreateEndpoints());
+        // server.use('/v1', mapAndCreateEndpoints());
         // server.use('/v1/admin', checkToken, ticketRouter);
         // server.use('/v1/admin', checkToken, settingRouter);
 
